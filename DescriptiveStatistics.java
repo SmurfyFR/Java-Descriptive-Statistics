@@ -8,7 +8,9 @@ public class DescriptiveStatistics {
      */
     public static int[] generateRandom(int n) {
         int[] randomValues = new int[n];
-        for (int i = 0; i < n; i++) randomValues[i] = (int) (Math.random() * 101);
+        for (int i = 0; i < n; i++) {
+            randomValues[i] = (int) (Math.random() * 101);
+        }
         return randomValues;
     }
 

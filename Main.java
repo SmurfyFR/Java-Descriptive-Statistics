@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
 	    /* Initialization */
-	    MathWrapper.useJavaMath(false);
+        MathWrapper.useJavaMath(false);
         Scanner scanner = new Scanner(System.in);
 
         /* Generate data or get it from a file ? */
@@ -19,15 +19,15 @@ public class Main {
         System.out.println("[1] - Generate dataset");
         System.out.println("[2] - Import dataset from file");
         do {
-             choice = inputInt(scanner);
-        } while(choice != 1 && choice != 2);
+            choice = inputInt(scanner);
+        } while (choice != 1 && choice != 2);
 
         int[] values = null;
-        if(choice == 1) {
+        if (choice == 1) {
             System.out.println("How many values do you want to generate :");
             int n = inputInt(scanner);
             values = DescriptiveStatistics.generateRandom(n);
-        } else if(choice == 2) {
+        } else if (choice == 2) {
             // import from file
             System.out.println("Please enter the file path :");
             scanner.nextLine(); // Empty buffer before
@@ -47,15 +47,25 @@ public class Main {
         System.out.println("Arithmetic mean : " + DescriptiveStatistics.arithmeticMean(values));
         System.out.println("Standard deviation : " + DescriptiveStatistics.standardDeviation(values));
         System.out.print("Standard deviation is : ");
-        if(DescriptiveStatistics.isStandardDeviationLow(values)) {
+        if (DescriptiveStatistics.isStandardDeviationLow(values)) {
             System.out.println("low.");
         } else {
             System.out.println("high.");
         }
 
-        System.out.println("Drawing ...");
+        choice = 0;
+        System.out.println("[1] - Plot data");
+        System.out.println("[2] - Exit now");
+        do {
+            choice = inputInt(scanner);
+        } while (choice != 1 && choice != 2);
 
-        DescriptiveStatisticsDraw.draw(values);
+        if (choice == 1) {
+            System.out.println("Drawing ...");
+            DescriptiveStatisticsDraw.draw(values);
+        }
+
+        return;
     }
 
     private static void printTable(int[] values) {
