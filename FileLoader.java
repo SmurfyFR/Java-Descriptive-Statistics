@@ -3,18 +3,25 @@ import java.util.Scanner;
 import java.io.File;
 
 public class FileLoader {
-    public static int[] loadDatasetFromFile(String filepath) {
-        int[] values = null;
-        int numberOfLines = 0;
+    protected static Scanner openFileHandle(String filepath) {
         Scanner fileIn = null;
 
-        /* First count number of lines */
         try {
             fileIn = new Scanner(new File(filepath));
         } catch(FileNotFoundException e) {
             System.out.println("Cannot open file : '" + filepath + "'.");
             System.exit(1);
         }
+
+        return fileIn;
+    }
+    public static int[] loadDatasetFromFile(String filepath) {
+        int[] values = null;
+        int numberOfLines = 0;
+        Scanner fileIn = null;
+
+        /* First count number of lines */
+        fileIn = openFileHandle(filepath);
 
         while(fileIn.hasNextInt()) {
             numberOfLines++;
@@ -22,12 +29,8 @@ public class FileLoader {
         }
 
         /* Then build values array with each line */
-        try {
-            fileIn = new Scanner(new File(filepath));
-        } catch(FileNotFoundException e) {
-            System.out.println("Cannot open file : '" + filepath + "'.");
-            System.exit(1);
-        }
+        fileIn.close();
+        fileIn = openFileHandle(filepath);
 
         values = new int[numberOfLines];
         int i = 0;
