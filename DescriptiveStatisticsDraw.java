@@ -96,7 +96,7 @@ public class DescriptiveStatisticsDraw {
 
             StdDraw.rectangle(x, y, halfWidth, halfHeight);
 
-            if(i % 20 == 0) {
+            if(i % 20 == 0 || i == max || i == min) {
                 StdDraw.text(x, DIV_LEGEND_HEIGHT + PADDING - 15, Integer.toString(i));
             }
         }
