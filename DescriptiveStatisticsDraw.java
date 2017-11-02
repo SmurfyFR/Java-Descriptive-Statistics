@@ -21,7 +21,7 @@ public class DescriptiveStatisticsDraw {
         StdDraw.setFont(currentFont);
     }
 
-    private static void drawLegendDiv(int size, int min, int max, int mode, double median, double mean, double deviation) {
+    private static void drawLegendDiv(int size, int min, int max, int mode, double median, double mean, double deviation, boolean isStandardDeviationLow) {
         /* Legend box */
         StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
         StdDraw.filledRectangle(0, 0, WINDOW_SIZE_WIDTH, DIV_LEGEND_HEIGHT);
@@ -39,7 +39,9 @@ public class DescriptiveStatisticsDraw {
         StdDraw.textRight(WINDOW_SIZE_WIDTH - 3*PADDING, DIV_LEGEND_HEIGHT - 40, "Median : " + median);
         StdDraw.textRight(WINDOW_SIZE_WIDTH - 3*PADDING, DIV_LEGEND_HEIGHT - 60, "Arithmetic mean : " + mean);
         StdDraw.textRight(WINDOW_SIZE_WIDTH - 3*PADDING, DIV_LEGEND_HEIGHT - 80, "Standard deviation : " + deviation);
-
+        StdDraw.textRight(WINDOW_SIZE_WIDTH - 3*PADDING, DIV_LEGEND_HEIGHT - 100,
+                "Standard deviation is : " + (isStandardDeviationLow ? "low" : "high")
+        );
 
     }
 
@@ -54,9 +56,10 @@ public class DescriptiveStatisticsDraw {
         double median = DescriptiveStatistics.medianValue(values);
         double mean = DescriptiveStatistics.arithmeticMean(values);
         double deviation = DescriptiveStatistics.standardDeviation(values);
+        boolean isStandardDeviationLow = DescriptiveStatistics.isStandardDeviationLow(values);
 
         /* Draw legend */
-        drawLegendDiv(values.length, min, max, mode, median, mean, deviation);
+        drawLegendDiv(values.length, min, max, mode, median, mean, deviation, isStandardDeviationLow);
 
         /* Plot data's histogram */
         double[] frequencies = DescriptiveStatistics.getFrequencyArray(values);

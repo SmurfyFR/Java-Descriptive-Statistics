@@ -169,4 +169,18 @@ public class DescriptiveStatistics {
 
         return frequencies;
     }
+
+    public static boolean isStandardDeviationLow(int[] values) {
+        int count = 0;
+        double mean = arithmeticMean(values);
+        double deviation = standardDeviation(values);
+
+        for(int i = 0; i < values.length; i++) {
+            if(values[i] >= (mean - deviation) && values[i] <= (mean + deviation)) {
+                count++;
+            }
+        }
+
+        return (count/values.length) >= 0.7;
+    }
 }

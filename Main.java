@@ -31,6 +31,12 @@ public class Main {
         System.out.println("Median : " + DescriptiveStatistics.medianValue(generatedValues));
         System.out.println("Arithmetic mean : " + DescriptiveStatistics.arithmeticMean(generatedValues));
         System.out.println("Standard deviation : " + DescriptiveStatistics.standardDeviation(generatedValues));
+        System.out.print("Standard deviation is : ");
+        if(DescriptiveStatistics.isStandardDeviationLow(generatedValues)) {
+            System.out.println("low.");
+        } else {
+            System.out.println("high.");
+        }
 
         System.out.println("Drawing ...");
 
