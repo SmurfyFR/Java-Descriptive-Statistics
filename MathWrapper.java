@@ -5,7 +5,9 @@ public class MathWrapper {
     protected static boolean useJavaMath = false;
 
     /**
-     * Do we need to use Java Math library or our own implementations ?
+     * Permits to use Java's Math library (true) or our own implementation (false).
+     * If false, MathWrapper's methods will only use basic arithmetic functions.
+     * @param use Use Java's Math library (true) or our own implementation (false).
      */
     public static void useJavaMath(boolean use) {
         MathWrapper.useJavaMath = use;
@@ -19,7 +21,11 @@ public class MathWrapper {
     public static final double EPSILON = 0.000001;
 
     /**
-     * Returns the base^(exponent) using recursivity (2^3 = 2 * 2^2 = 2 * 2 * 2 * 1)
+     * Returns calculation of base^(exponent).
+     * If useJavaMath is set to false, it will use recursivity (2^3 = 2 * 2^2 = 2 * 2 * 2 * 1)
+     * @param base Base
+     * @param exponent Exponent
+     * @return base^(exponent)
      */
     public static double pow(double base, double exponent) {
         if(MathWrapper.useJavaMath) {
@@ -31,7 +37,9 @@ public class MathWrapper {
     }
 
     /**
-     * Returns an approach of sqrt(a)
+     * Calculates sqrt of a
+     * @param a Base number
+     * @return sqrt(a)
      */
     public static double sqrt(double a) {
         if(MathWrapper.useJavaMath) {
@@ -55,7 +63,9 @@ public class MathWrapper {
     }
 
     /**
-     * Returns an approach of cubic root of a
+     * Calculates cubic root of a
+     * @param a Base
+     * @return cbrt(a)
      */
     public static double cbrt(double a) {
         if(MathWrapper.useJavaMath) {
@@ -74,6 +84,8 @@ public class MathWrapper {
 
     /**
      * Returns absolute value of a
+     * @param a Base
+     * @return abs(a)
      */
     public static double abs(double a) {
         if(MathWrapper.useJavaMath) {
@@ -88,7 +100,9 @@ public class MathWrapper {
     }
 
     /**
-     * Returns factorial a (recursivity)
+     * Calculates factorial of a
+     * @param a Base
+     * @return a!
      */
     public static int factorial(int a) {
         if(a == 0.0) {
@@ -99,7 +113,9 @@ public class MathWrapper {
     }
 
     /**
-     * Limited development of cos(a) at degree 8
+     * Calculates cosinus of a
+     * @param a Base
+     * @return cos(a);
      */
     public static double cos(double a) {
         if(MathWrapper.useJavaMath) {
@@ -119,7 +135,9 @@ public class MathWrapper {
     }
 
     /**
-     * Limited development of arccos(a) at degree 3
+     * Calculates arccos of a
+     * @param a Base
+     * @return acos(a)
      */
     public static double acos(double a) {
         if(MathWrapper.useJavaMath) {

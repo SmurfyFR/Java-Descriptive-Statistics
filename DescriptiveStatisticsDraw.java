@@ -1,7 +1,6 @@
 import java.awt.*;
 
 public class DescriptiveStatisticsDraw {
-
     public static final int WINDOW_SIZE_WIDTH = 1024;
     public static final int WINDOW_SIZE_HEIGHT = 600;
 
@@ -9,6 +8,9 @@ public class DescriptiveStatisticsDraw {
     public static final int DIV_GRAPH_HEIGHT = WINDOW_SIZE_HEIGHT - DIV_LEGEND_HEIGHT;
     public static final int PADDING = 62;
 
+    /**
+     * Initializes the StdDraw canvas
+     */
     private static void initCanvas() {
         StdDraw.setCanvasSize(WINDOW_SIZE_WIDTH, WINDOW_SIZE_HEIGHT);
         StdDraw.setXscale(0, WINDOW_SIZE_WIDTH);
@@ -21,6 +23,17 @@ public class DescriptiveStatisticsDraw {
         StdDraw.setFont(currentFont);
     }
 
+    /**
+     * Draws canvas' bottom part.
+     * @param size Number of values
+     * @param min Minimal value
+     * @param max Maximal value
+     * @param mode Mode value
+     * @param median Median
+     * @param mean Arithmetic mean
+     * @param deviation Standard deviation
+     * @param isStandardDeviationLow Is the standard deviation called "low" ?
+     */
     private static void drawLegendDiv(int size, int min, int max, int mode, double median, double mean, double deviation, boolean isStandardDeviationLow) {
         /* Legend box */
         StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
@@ -45,6 +58,10 @@ public class DescriptiveStatisticsDraw {
 
     }
 
+    /**
+     * Draws the entire canvas
+     * @param values Dataset containing integer values
+     */
     public static void draw(int[] values) {
         /* Initialize StdDraw */
         initCanvas();

@@ -1,12 +1,22 @@
 
 public class DescriptiveStatistics {
 
+    /**
+     * Generates a pseudo-random data set
+     * @param n Desired number of values
+     * @return Pseudo-randomly generated dataset
+     */
     public static int[] generateRandom(int n) {
         int[] randomValues = new int[n];
         for (int i = 0; i < n; i++) randomValues[i] = (int) (Math.random() * 101);
         return randomValues;
     }
 
+    /**
+     * Determines the maximum value of the dataset
+     * @param values Dataset
+     * @return Maximum value of the dataset
+     */
     public static int maximumValue(int[] values) {
 
         int max = values[0];
@@ -16,6 +26,11 @@ public class DescriptiveStatistics {
         return max;
     }
 
+    /**
+     * Determines the minimum value of the dataset
+     * @param values Dataset
+     * @return Minimal value of the dataset
+     */
     public static int minimumValue(int[] values) {
         int min = values[0];
         for (int i = 0; i < values.length; i++) {
@@ -24,6 +39,11 @@ public class DescriptiveStatistics {
         return min;
     }
 
+    /**
+     * Determines mode value of the dataset
+     * @param values Dataset
+     * @return Mode value of the dataset
+     */
     public static int modeValue(int[] values) {
         int o = 0;
         int maxCount = 0;
@@ -42,6 +62,11 @@ public class DescriptiveStatistics {
         return o;
     }
 
+    /**
+     * Determines the median value of the dataset
+     * @param values Dataset
+     * @return Median value of the dataset
+     */
     public static double medianValue(int[] values) {
         // First, the array needs to be sorted
         sortValues(values);
@@ -56,8 +81,8 @@ public class DescriptiveStatistics {
     }
 
     /**
-     * Quicksort implementation
-     * @param values
+     * Sort given dataset using Quick-Sort algorithm
+     * @param values Dataset
      */
     public static void sortValues(int[] values) {
         /* Array already sorted ... */
@@ -114,7 +139,7 @@ public class DescriptiveStatistics {
     }
 
     /**
-     * Bubble Sort
+     * Sort dataset using Bubble-Sort algorithm
      * @param values
      */
     public static void bubbleSort(int[] values) {
@@ -133,6 +158,11 @@ public class DescriptiveStatistics {
         }
     }
 
+    /**
+     * Calculates the arithmetic mean of the dataset
+     * @param values Dataset
+     * @return Arithmetic mean of the dataset
+     */
     public static double arithmeticMean(int[] values) {
         double mean = 0;
 
@@ -143,6 +173,11 @@ public class DescriptiveStatistics {
         return mean / values.length;
     }
 
+    /**
+     * Calculates the standard deviation of the dataset
+     * @param values Dataset
+     * @return Standard deviation of the dataset
+     */
     public static double standardDeviation(int[] values) {
         double deviation = 0;
         double mean = arithmeticMean(values);
@@ -154,6 +189,11 @@ public class DescriptiveStatistics {
         return MathWrapper.sqrt(deviation / values.length);
     }
 
+    /**
+     * Builds a frequency array of the given dataset
+     * @param values Dataset
+     * @return Frequency array
+     */
     public static double[] getFrequencyArray(int[] values) {
         int max = maximumValue(values);
         double[] frequencies = new double[max + 1];
@@ -170,6 +210,11 @@ public class DescriptiveStatistics {
         return frequencies;
     }
 
+    /**
+     * Determines if the given dataset is considered "low" or "high"
+     * @param values Dataset
+     * @return Whether the given dataset is consired "low" or "high"
+     */
     public static boolean isStandardDeviationLow(int[] values) {
         int count = 0;
         double mean = arithmeticMean(values);

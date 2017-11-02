@@ -3,6 +3,11 @@ import java.util.Scanner;
 import java.io.File;
 
 public class FileLoader {
+    /**
+     * Opens a Scanner instance for a given file path
+     * @param filepath File path relative to current working directory
+     * @return Scanner instance for the given file path
+     */
     protected static Scanner openFileHandle(String filepath) {
         Scanner fileIn = null;
 
@@ -15,6 +20,13 @@ public class FileLoader {
 
         return fileIn;
     }
+
+    /**
+     * Load integer numbers from a file.
+     * The file MUST have one integer per line, otherwise the file won't be parsed correctly.
+     * @param filepath File path relative to current working directory
+     * @return Array of all integer values contained in the file
+     */
     public static int[] loadDatasetFromFile(String filepath) {
         int[] values = null;
         int numberOfLines = 0;
