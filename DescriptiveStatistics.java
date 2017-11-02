@@ -165,13 +165,8 @@ public class DescriptiveStatistics {
                 }
             }
             frequencies[i] = frequencies[i] / (double) values.length;
-            System.out.println(frequencies[i]);
         }
 
         return frequencies;
-    }
-
-    public static void printTable(int[] randomValues) {
-        for (int i = 0 ; i < randomValues.length ; i++) System.out.print(randomValues[i] + " | ");
     }
 }
